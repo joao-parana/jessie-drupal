@@ -40,24 +40,53 @@ Contêiner mysql
 
 ## Passo a passo da configuração
 
+Após iniciar o conteiner MySQL `mysql_db` e o contêiner Drupal 8 `mydrupal` 
+podemos abrir no Browser a pagina [http://dockerhost.local](http://dockerhost.local) 
+assumindo que `dockerhost.local` está apontando corretamente para o Computador
+host rodando o Docker que pode ser uma maquina Virtual, no caso do MAC OSX e Windows
+ou `localhost` no caso do Linux.
+
+Abaixo aparecem as telas típicas desse processo.
+
+Inicialmente devemos __Escolher o Idioma__
+
 ![Escolhendo o Idioma](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-01.png)
+
+Pode ocorrer __problema de rede__
 
 ![Problema de Rede](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-02.png)
 
+Resolvendo eventuais problemas de rede podemos __Escolhendo o Perfil de Instalação__
+
 ![Escolhendo o Perfil de Instalação](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-03.png)
+
+E em seguida __Configurar o Database__
 
 ![Configuração do Database](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-04.png)
 
+Pode ocorrer erro na Configuração do Database relacionados a endereçamento IP.
+
 ![Erro no Database](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-05.png)
+
+Assim __verificamos o IP__ do Contêiner que está rodando o contêiner MySQL. 
+Obviamente podemos também usar nome de host em vez de endereço IP. 
 
 ![Verificando o endereço IP](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-00.png)
 
+Agora podemos __Configurar o Database Corretamente__
+
 ![Configuração do Database Corretamente](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-06.png)
 
+E __Instalar o Drupal__ 
+
 ![Instalando ...](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-07.png)
+
+Que pede os dados de __Configuração do Site__
 
 ![Configuração do Site](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-08.png)
 
 ![Configuração do Site - Continuação ](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-09.png)
 
+Finalmente temos a tela de confirmação : __Bemvindo ao Site Drupal 8__
 ![Bemvindo ao Site Drupal 8](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-10.png)
+
