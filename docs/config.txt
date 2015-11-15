@@ -1,0 +1,127 @@
+Configurações típicas
+=====================
+
+MYSQL_ENV_MYSQL_MAJOR => 5.6
+MYSQL_ENV_MYSQL_VERSION => 5.6.26
+MYSQL_NAME => /mydrupal/mysql
+MYSQL_PORT => tcp://172.17.0.23:3306
+MYSQL_PORT_3306_TCP => tcp://172.17.0.23:3306
+MYSQL_PORT_3306_TCP_ADDR => 172.17.0.23
+MYSQL_PORT_3306_TCP_PORT => 3306
+MYSQL_PORT_3306_TCP_PROTO => tcp
+PHP_EXTRA_BUILD_DEPS => apache2-dev
+PHP_EXTRA_CONFIGURE_ARGS => --with-apxs2
+PHP_INI_DIR => /usr/local/etc/php
+PHP_MEMORY_LIMIT => 129M
+PHP_VERSION => 5.6.13
+
+PWD => /var/www/html
+Path to sendmail =>  -t -i 
+
+_ => /usr/local/bin/php
+_ENV["DRUPAL_MD5"] => 33a4738989e4b571176e47d26443cb26
+_ENV["DRUPAL_VERSION"] => 8.0.0-rc4
+_ENV["GPG_KEYS"] => 0BD78B5F97500D450838F95DFE857D9A90D90EC1 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
+_ENV["HOME"] => /root
+_ENV["HOSTNAME"] => 265a3166c107
+_ENV["MYSQL_ENV_MYSQL_MAJOR"] => 5.6
+_ENV["MYSQL_ENV_MYSQL_VERSION"] => 5.6.26
+_ENV["MYSQL_NAME"] => /mydrupal/mysql
+_ENV["MYSQL_PORT"] => tcp://172.17.0.23:3306
+_ENV["MYSQL_PORT_3306_TCP"] => tcp://172.17.0.23:3306
+_ENV["MYSQL_PORT_3306_TCP_ADDR"] => 172.17.0.23
+_ENV["MYSQL_PORT_3306_TCP_PORT"] => 3306
+_ENV["MYSQL_PORT_3306_TCP_PROTO"] => tcp
+_ENV["PATH"] => /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+_ENV["PHP_EXTRA_BUILD_DEPS"] => apache2-dev
+_ENV["PHP_EXTRA_CONFIGURE_ARGS"] => --with-apxs2
+_ENV["PHP_INI_DIR"] => /usr/local/etc/php
+_ENV["PHP_MEMORY_LIMIT"] => 129M
+_ENV["PHP_VERSION"] => 5.6.13
+_ENV["PWD"] => /var/www/html
+_ENV["REFRESHED_AT"] => 2015-11-15
+_ENV["SHLVL"] => 1
+_ENV["_"] => /usr/local/bin/php
+_SERVER["DOCUMENT_ROOT"] => 
+_SERVER["DRUPAL_MD5"] => 33a4738989e4b571176e47d26443cb26
+_SERVER["DRUPAL_VERSION"] => 8.0.0-rc4
+_SERVER["GPG_KEYS"] => 0BD78B5F97500D450838F95DFE857D9A90D90EC1 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
+_SERVER["HOME"] => /root
+_SERVER["HOSTNAME"] => 265a3166c107
+_SERVER["MYSQL_ENV_MYSQL_MAJOR"] => 5.6
+_SERVER["MYSQL_ENV_MYSQL_VERSION"] => 5.6.26
+_SERVER["MYSQL_NAME"] => /mydrupal/mysql
+_SERVER["MYSQL_PORT"] => tcp://172.17.0.23:3306
+_SERVER["MYSQL_PORT_3306_TCP"] => tcp://172.17.0.23:3306
+_SERVER["MYSQL_PORT_3306_TCP_ADDR"] => 172.17.0.23
+_SERVER["MYSQL_PORT_3306_TCP_PORT"] => 3306
+_SERVER["MYSQL_PORT_3306_TCP_PROTO"] => tcp
+_SERVER["PATH"] => /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+_SERVER["PATH_TRANSLATED"] => 
+_SERVER["PHP_EXTRA_BUILD_DEPS"] => apache2-dev
+_SERVER["PHP_EXTRA_CONFIGURE_ARGS"] => --with-apxs2
+_SERVER["PHP_INI_DIR"] => /usr/local/etc/php
+_SERVER["PHP_MEMORY_LIMIT"] => 129M
+_SERVER["PHP_SELF"] => 
+_SERVER["PHP_VERSION"] => 5.6.13
+_SERVER["PWD"] => /var/www/html
+_SERVER["REFRESHED_AT"] => 2015-11-15
+_SERVER["REQUEST_TIME"] => 1447618053
+_SERVER["REQUEST_TIME_FLOAT"] => 1447618053.6586
+_SERVER["SCRIPT_FILENAME"] => 
+_SERVER["SCRIPT_NAME"] => 
+_SERVER["SHLVL"] => 1
+_SERVER["_"] => /usr/local/bin/php
+_SERVER["argc"] => 0
+_SERVER["argv"] => Array
+
+date.timezone => America/Sao_Paulo => America/Sao_Paulo
+date/time support => enabled
+default_charset => UTF-8 => UTF-8
+default_mimetype => text/html => text/html
+
+error_log => /var/log/php/php-scripts.log => /var/log/php/php-scripts.log
+error_prepend_string => no value => no value
+error_reporting => 32767 => 32767
+exit_on_timeout => Off => Off
+extension_dir => /usr/local/lib/php/extensions/no-debug-non-zts-20131226 => /usr/local/lib/php/extensions/no-debug-non-zts-20131226
+file_uploads => On => On
+include_path => .:/usr/local/lib/php => .:/usr/local/lib/php
+log_errors => On => On
+log_errors_max_len => 1024 => 1024
+mail.add_x_header => Off => Off
+mail.force_extra_parameters => no value => no value
+mail.log => no value => no value
+max_execution_time => 0 => 0
+max_file_uploads => 20 => 20
+max_input_nesting_level => 64 => 64
+max_input_time => -1 => -1
+max_input_vars => 1000 => 1000
+
+opcache.blacklist_filename => no value => no value
+opcache.consistency_checks => 0 => 0
+opcache.dups_fix => Off => Off
+opcache.enable => On => On
+opcache.enable_cli => On => On
+opcache.enable_file_override => Off => Off
+opcache.error_log => no value => no value
+opcache.fast_shutdown => 1 => 1
+opcache.file_update_protection => 2 => 2
+opcache.force_restart_timeout => 180 => 180
+opcache.inherited_hack => On => On
+opcache.interned_strings_buffer => 8 => 8
+opcache.load_comments => 1 => 1
+opcache.log_verbosity_level => 1 => 1
+opcache.max_accelerated_files => 4000 => 4000
+opcache.max_file_size => 0 => 0
+opcache.max_wasted_percentage => 5 => 5
+opcache.memory_consumption => 128 => 128
+opcache.optimization_level => 0xFFFFFFFF => 0xFFFFFFFF
+opcache.preferred_memory_model => no value => no value
+opcache.protect_memory => 0 => 0
+opcache.restrict_api => no value => no value
+opcache.revalidate_freq => 60 => 60
+opcache.revalidate_path => Off => Off
+opcache.save_comments => 1 => 1
+opcache.use_cwd => On => On
+opcache.validate_timestamps => On => On
