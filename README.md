@@ -100,7 +100,10 @@ Para executá-lo faça:
     
     docker exec -i-t  mydrupal /bin/bash
 
-Isso permite que executemos dentro do Contêiner, comandos como estes abaixo:
+Isso permite que executemos dentro do Contêiner, comandos como este abaixo:
 
     drupal site:status
-    
+
+## Links úteis
+
+[Playlist DrupalCon 2015 - Barcelona](https://www.youtube.com/playlist?list=PLpeDXSh4nHjR26Dheb6U1NUSp0aACYGvE)
