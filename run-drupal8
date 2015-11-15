@@ -1,0 +1,7 @@
+docker run -d --name mysql_db -p 9306:3306 parana/mysql
+docker run --name mydrupal --link mysql_db:mysql -p 80:80 -d parana/jessie-drupal
+echo " "
+echo "Você pode executar : docker exec -i-t mysql_db /bin/bash"
+echo "ou: docker exec -i-t  mydrupal /bin/bash"
+echo "e também: open http://dockerhost.local"
+echo " "

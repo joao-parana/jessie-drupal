@@ -46,3 +46,11 @@ RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar
 # install Drupal Console for future use
 RUN curl -LSs http://drupalconsole.com/installer | php \
   && mv console.phar /usr/local/bin/drupal
+
+RUN mkdir -p /var/log/php && \
+    chown -R www-data:www-data /var/www/html && \
+    chown -R www-data:www-data /var/log/php
+
+ENV PHP_MEMORY_LIMIT 129M
+COPY conf/php.ini /usr/local/etc/php/php.ini
+COPY test-mail.php /var/www/html/test-mail.php

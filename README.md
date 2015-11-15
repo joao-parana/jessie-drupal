@@ -69,7 +69,9 @@ Pode ocorrer erro na Configuração do Database relacionados a endereçamento IP
 ![Erro no Database](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-05.png)
 
 Assim __verificamos o IP__ do Contêiner que está rodando o contêiner MySQL. 
-Obviamente podemos também usar nome de host em vez de endereço IP. 
+Obviamente podemos também usar nome de host em vez de endereço IP. Neste caso 
+o nome do host em questão é `mysql_db` definido via parâmetro 
+`--link mysql_db:mysql` quando invocamos o contêiner.
 
 ![Verificando o endereço IP](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-00.png)
 
@@ -90,3 +92,15 @@ Que pede os dados de __Configuração do Site__
 Finalmente temos a tela de confirmação : __Bemvindo ao Site Drupal 8__
 ![Bemvindo ao Site Drupal 8](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-10.png)
 
+## Usando o Drupal Console
+
+Como pode ser observado no Dockerfile, o Drupal Console é instalado 
+
+Para executá-lo faça:
+    
+    docker exec -i-t  mydrupal /bin/bash
+
+Isso permite que executemos dentro do Contêiner, comandos como estes abaixo:
+
+    drupal site:status
+    
