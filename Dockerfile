@@ -8,7 +8,7 @@ FROM php:5.6-apache
 #
 MAINTAINER João Antonio Ferreira "joao.parana@gmail.com"
 
-ENV REFRESHED_AT 2015-11-15
+ENV REFRESHED_AT 2015-11-20
 
 RUN a2enmod rewrite
 
@@ -26,8 +26,8 @@ RUN cat /opcache-segment.ini >> /usr/local/etc/php/conf.d/opcache-recommended.in
 WORKDIR /var/www/html
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.0.0-rc4
-ENV DRUPAL_MD5 33a4738989e4b571176e47d26443cb26
+ENV DRUPAL_VERSION 8.0.0
+ENV DRUPAL_MD5 92ce9a54fa926b58032a4e39b0f9a9f1
 
 RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
 	&& echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c - \
@@ -43,9 +43,16 @@ RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar
 # RUN composer global require drush/drush:dev-master \
 #   && echo "export PATH=\"$HOME/.composer/vendor/bin:$PATH\"" > ~/.bashrc
 
-# install Drupal Console for future use
+# Install Drupal Console for future use
+# Doc on https://hechoendrupal.gitbooks.io/drupal-console/content/en/index.html
 RUN curl -LSs http://drupalconsole.com/installer | php \
   && mv console.phar /usr/local/bin/drupal
+
+RUN cd profiles && \
+    curl -O  http://ftp.drupal.org/files/projects/panopoly-8.x-2.0-alpha1-no-core.tar.gz && \
+    tar -xzf panopoly-8.x-2.0-alpha1-no-core.tar.gz && \
+    rm panopoly-8.x-2.0-alpha1-no-core.tar.gz && \
+    cd ..
 
 RUN mkdir -p /var/log/php && \
     chown -R www-data:www-data /var/www/html && \
