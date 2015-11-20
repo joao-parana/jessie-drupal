@@ -92,6 +92,25 @@ Que pede os dados de __Configuração do Site__
 Finalmente temos a tela de confirmação : __Bemvindo ao Site Drupal 8__
 ![Bemvindo ao Site Drupal 8](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-10.png)
 
+### Instalando à partir de um Instalation Profile
+
+Podemos escolher o **Perfil de Instalação** desejado. Neste caso escolhi o **Panopoly**.
+
+![Escolhendo o Perfil de Instalação](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-11.png)
+
+Assim teremos três novos modulos do Framework Panopoly além dos módulos dos quais ele depende.
+
+![https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-12.png](https://raw.githubusercontent.com/joao-parana/jessie-drupal/master/docs/img/drupal-install-12.png)
+
+#### Funcionalidade do Panopoly
+
+* Panopoly Foundation
+  - panopoly_core
+* panopoly_images
+  - panopoly_theme
+* panopoly_magic
+  - panopoly_widgets
+
 ## Usando o Drupal Console
 
 Como pode ser observado no Dockerfile, o Drupal Console é instalado 
@@ -107,3 +126,9 @@ Isso permite que executemos dentro do Contêiner, comandos como este abaixo:
 ## Links úteis
 
 [Playlist DrupalCon 2015 - Barcelona](https://www.youtube.com/playlist?list=PLpeDXSh4nHjR26Dheb6U1NUSp0aACYGvE)
+
+Para entender a arquitetura do Drupal8:
+
+[Drupal 8 & Symfony](https://www.youtube.com/watch?v=8vwC_01KFLo)
+e
+[projeto associado no Github](https://github.com/palantirnet/hugs)
