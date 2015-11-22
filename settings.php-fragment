@@ -1,0 +1,1 @@
+s/\$databases = array();/\n\$databases = array();\n\n\$databases['default']['default'] = array(\n  'driver' => 'mysql',\n  'database' => 'my-db',\n  'username' => 'wp',\n  'password' => 'secret',\n  'host' => 'mysql_db',\n  'prefix' => 'd8_'\n);/

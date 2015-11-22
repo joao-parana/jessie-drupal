@@ -1,9 +1,25 @@
 docker run -d --name mysql_db -p 9306:3306 parana/mysql
-docker run --name mydrupal --link mysql_db:mysql -p 80:80 -d parana/jessie-drupal
+sleep 15 # Esperando o database entrar para iniciar o Drupal 8
+docker run --name mydrupal \
+           --link mysql_db:mysql \
+           -d -p 80:80 \
+           parana/jessie-drupal
 echo " "
 echo "Você pode executar : docker exec -i-t mysql_db /bin/bash"
 echo "ou: docker exec -i-t  mydrupal /bin/bash"
 echo "e também: open http://dockerhost.local"
 echo "Ou para ver os logs do MySQL"
 echo "docker logs mysql_db"
-echo " "
+echo "Para ver os logs do Drupal 8 travando a console, execute:"
+echo "docker logs -f mydrupal"
+echo "Para executar uma Bash no contêiner Drupal 8, execute:"
+echo "docker exec -i -t  mydrupal /bin/bash"
+echo "docker exec mydrupal cat /var/log/php/php-scripts.log"
+echo "Para rodar o contêiner interativamente use: "
+echo ""
+echo "docker run --rm --name mydrupal \ "
+echo "           --link mysql_db:mysql \ "
+echo "           -i -t -p 80:80 \ "
+echo "           parana/jessie-drupal /bin/bash "
+echo ""
+echo "••• `date` - Abra o site no Browser e Informe os dados corretos para Instalar o Drupal 8"

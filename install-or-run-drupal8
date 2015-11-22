@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+DRUPAL_SITE_FILES_DIR=sites/default/files
+DRUPAL_INSTALLED=false
+
+install_drupal8() {
+  # key="$1"
+  # value="$2"
+  drupal site:install    \
+    --db-type="mysql"    \
+    --db-host="mysql_db" \
+    --db-name="my-db"    \
+    --db-user="wp"       \
+    --db-pass="secret"   \
+    --db-prefix="d8_"    \
+    --db-port=3306       \
+    --langcode="en"      \
+    --site-name="Meu Site Drupal 8"        \
+    --site-mail="joao.parana@gmail.com"    \
+    --account-name="admin"                 \
+    --account-mail="joao.parana@gmail.com" \
+    --account-pass="drupal8admin" "panopoly"
+}
+
+if [ -f "$DRUPAL_SITE_FILES_DIR" ]; then
+  echo "••• `date` - Drupal 8 já está instalado"
+  DRUPAL_INSTALLED=true
+else
+  echo "••• `date` - Instalando o Drupal 8 - Panopoly"
+  echo "••• `date` - Informe os dados corretos para Instalar o Drupal 8"
+  # install_drupal8
+fi
+echo "••• `date` - Iniciando o Drupal 8"
+apache2-foreground

@@ -12,7 +12,7 @@ Reiniciando o Boot2Docker
 
 Fazendo o Build
 
-    docker build -t parana/jessie-drupal   . 
+    docker build -t parana/jessie-drupal . 
 
 Verificando
 
@@ -21,8 +21,13 @@ Verificando
 Para executar:
 
     docker run -d --name mysql_db -p 9306:3306 parana/mysql
-    docker run --name mydrupal --link mysql_db:mysql -p 80:80 -d parana/jessie-drupal
+    docker run --name mydrupal \
+           --link mysql_db:mysql \
+           -d -p 80:80
+           parana/jessie-drupal
     open http://dockerhost.local
+    # Opcionalmente podemos entrar numa seção Bash 
+    # do contêiner mysql_db
     docker exec -i-t mysql_db /bin/bash
 
 Váriáveis de ambiente:
@@ -121,6 +126,22 @@ Para executá-lo faça:
 
 Isso permite que executemos dentro do Contêiner, comandos como este abaixo:
 
+    drupal help site:install
+    # Instalando o site via Drupal Console        
+    drupal site:install \
+              --db-type="mysql" \
+              --db-host="mysql_db" \
+              --db-name="my-db" \
+              --db-user="wp" \
+              --db-pass="secret" \
+              --db-prefix="d8_" \
+              --db-port=3306 \
+              --langcode="en" \
+              --site-name="Meu Site Drupal 8" \
+              --site-mail="joao.parana@gmail.com" \
+              --account-name="admin" \
+              --account-mail="joao.parana@gmail.com" \
+              --account-pass="drupal8admin" "panopoly"  
     drupal site:status
 
 ## Links úteis
@@ -132,3 +153,30 @@ Para entender a arquitetura do Drupal8:
 [Drupal 8 & Symfony](https://www.youtube.com/watch?v=8vwC_01KFLo)
 e
 [projeto associado no Github](https://github.com/palantirnet/hugs)
+
+## Resolução de Problemas
+
+Atualmente o comando `drupal site:install` do __Drupal Console__ não instala
+o Site como especificado se usamos `--langcode="pt_BR"`. Quando usamos 
+`--langcode="en"` o __Drupal Console__ instala o Site porém ao tentar usá-lo 
+o Apache gera erro 500 e retorna o HTML mostrado abaixo:
+
+    <html>
+      <head>
+      </head>
+      <body>
+        The website encountered an unexpected error. 
+        Please try again later.
+      </body>
+    </html>
+
+E no Log do PHP `/var/log/php/php-scripts.log` vemos:
+
+    Uncaught PHP Exception InvalidArgumentException: "No check has been registered for access_check.user.login_status" at /var/www/html/core/lib/Drupal/Core/Access/CheckProvider.php line 99
+
+Desta forma comentei o comando correspondente na Shell `install-or-run-drupal8` 
+té que o  __Drupal Console__ esteja mais estável.
+
+Assim é preciso instalar como anteriormente, ou seja, navegando pelo Browser 
+interativamente usando `open http://dockerhost.local` e informando os 
+parâmetros como necessário.

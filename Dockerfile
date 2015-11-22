@@ -8,7 +8,7 @@ FROM php:5.6-apache
 #
 MAINTAINER João Antonio Ferreira "joao.parana@gmail.com"
 
-ENV REFRESHED_AT 2015-11-20
+ENV REFRESHED_AT 2015-11-21
 
 RUN a2enmod rewrite
 
@@ -61,3 +61,42 @@ RUN mkdir -p /var/log/php && \
 ENV PHP_MEMORY_LIMIT 129M
 COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY test-mail.php /var/www/html/test-mail.php
+
+# VOLUME /var/www/html
+RUN drupal init && \
+    echo "local:" > ~/.console/sites/drupal.yml  && \
+    echo "  root: /var/www/drupal8.dev" >> ~/.console/sites/drupal.yml && \
+    echo "  host: local" >> ~/.console/sites/drupal.yml && \
+    echo "dev:" >> ~/.console/sites/drupal.yml && \
+    echo "  root: /var/www/html/drupal" >> ~/.console/sites/drupal.yml && \
+    echo "  host: mydrupal" >> ~/.console/sites/drupal.yml && \
+    echo "  user: drupal" >> ~/.console/sites/drupal.yml && \
+    echo "" >> ~/.console/sites/drupal.yml && \
+    cp sites/default/default.settings.php sites/default/settings.php
+
+COPY settings.php-fragment /drupal-settings.php-fragment
+RUN sed -f /drupal-settings.php-fragment --in-place sites/default/settings.php && \
+    cat sites/default/settings.php
+
+# Para melhorar a usabilidade quando usar a Shell Bash 
+RUN sed -Ei 's/_completion/_completion --shell-type bash /' \
+    $HOME/.console/console.rc && \
+    echo "••• $HOME/.console/console.rc •••" && \
+    cat $HOME/.console/console.rc && \
+    sed -Ei 's/^# export/export/' $HOME/.bashrc && \
+    # sed -Ei 's/^# eval/eval/' $HOME/.bashrc && \
+    sed -Ei 's/^# alias/alias/' $HOME/.bashrc && \
+    echo "source \"$HOME/.console/console.rc\" 2>/dev/null" >> $HOME/.bashrc && \
+    echo "••• $HOME/.bashrc •••" && \
+    cat $HOME/.bashrc && \
+    echo ".mp3  38;5;160                   # Set fg color to color 160" >> /etc/DIR_COLORS  && \
+    echo ".flac 48;5;240                   # Set bg color to color 240" >> /etc/DIR_COLORS && \
+    echo ".ogg  38;5;160;48;5;240          # Set fg color 160 *and* bg color 240." >> /etc/DIR_COLORS && \
+    echo ".wav  01;04;05;38;5;160;48;5;240 # Pure madness" >> /etc/DIR_COLORS
+
+COPY install-or-run-drupal8 /install-or-run-drupal8
+
+# Removendo sites/default/settings.php devido a erro no Drupal console
+RUN rm sites/default/settings.php
+
+ENTRYPOINT ["/install-or-run-drupal8"]
