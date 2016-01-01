@@ -23,7 +23,7 @@ Para executar:
     docker run -d --name mysql_db -p 9306:3306 parana/mysql
     docker run --name mydrupal \
            --link mysql_db:mysql \
-           -d -p 80:80
+           -d -p 80:80 \
            parana/jessie-drupal
     open http://dockerhost.local
     # Opcionalmente podemos entrar numa seção Bash 

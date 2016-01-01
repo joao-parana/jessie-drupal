@@ -8,7 +8,7 @@ FROM php:5.6-apache
 #
 MAINTAINER João Antonio Ferreira "joao.parana@gmail.com"
 
-ENV REFRESHED_AT 2015-11-21
+ENV REFRESHED_AT 2016-01-01
 
 RUN a2enmod rewrite
 
@@ -26,8 +26,8 @@ RUN cat /opcache-segment.ini >> /usr/local/etc/php/conf.d/opcache-recommended.in
 WORKDIR /var/www/html
 
 # https://www.drupal.org/node/3060/release
-ENV DRUPAL_VERSION 8.0.0
-ENV DRUPAL_MD5 92ce9a54fa926b58032a4e39b0f9a9f1
+ENV DRUPAL_VERSION 8.0.1
+ENV DRUPAL_MD5 423cc4d28da066d099986ac0844f6abb
 
 RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar.gz" -o drupal.tar.gz \
 	&& echo "${DRUPAL_MD5} *drupal.tar.gz" | md5sum -c - \
@@ -45,8 +45,11 @@ RUN curl -fSL "http://ftp.drupal.org/files/projects/drupal-${DRUPAL_VERSION}.tar
 
 # Install Drupal Console for future use
 # Doc on https://hechoendrupal.gitbooks.io/drupal-console/content/en/index.html
-RUN curl -LSs http://drupalconsole.com/installer | php \
-  && mv console.phar /usr/local/bin/drupal
+##### RUN curl -LSs http://drupalconsole.com/installer | php \
+#####   && mv console.phar /usr/local/bin/drupal
+RUN curl https://drupalconsole.com/installer -L -o /usr/local/bin/drupal && \
+    chmod a+rx /usr/local/bin/drupal
+
 
 RUN cd profiles && \
     curl -O  http://ftp.drupal.org/files/projects/panopoly-8.x-2.0-alpha1-no-core.tar.gz && \
@@ -78,7 +81,7 @@ COPY settings.php-fragment /drupal-settings.php-fragment
 RUN sed -f /drupal-settings.php-fragment --in-place sites/default/settings.php && \
     cat sites/default/settings.php
 
-# Para melhorar a usabilidade quando usar a Shell Bash 
+# Para melhorar a usabilidade quando usar a Shell Bash
 RUN sed -Ei 's/_completion/_completion --shell-type bash /' \
     $HOME/.console/console.rc && \
     echo "••• $HOME/.console/console.rc •••" && \
